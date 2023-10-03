@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Chooser</title>
+    <style>
+      .answer {
+        background-color: rgb(47, 240, 22);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="seperator">Seperator: </label>
+    <input type="text" name="sperator" id="seperator" />
+    <br /><br />
+    <label for="options">Enter your options: </label>
+    <br />
+    <textarea
+      placeholder="adjust seperator same as above"
+      name="options"
+      id="options"
+      cols="30"
+      rows="10"
+    >
+adjust seperator same as above</textarea
+    >
+    <br /><br />
+    <button id="btn">Choose</button>
+    <div class="answer hidden"></div>
+    <script>
+      let options = document.getElementById("options");
+      let seperator = document.getElementById("seperator");
+      const answer = document.querySelector(".answer");
+      const rand = function (len) {
+        return Math.trunc(Math.random() * len);
+      };
+      const btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        seperator = seperator.value;
+        answer.textContent = options.value
+          .split(seperator)
+          .at([rand(options.length)]);
+      });
+    </script>
+  </body>
+</html>
